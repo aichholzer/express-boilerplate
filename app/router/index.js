@@ -33,5 +33,11 @@ module.exports = (express) => {
   });
 
   router.use((req, res) => res.render('404'));
+
+  router.use((err, req, res, next) => {
+    if (!err.errors) return next(err);
+    return res.render('error', { errors: err.errors });
+  });
+
   return router;
 };

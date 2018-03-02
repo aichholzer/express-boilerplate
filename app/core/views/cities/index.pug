@@ -7,3 +7,35 @@ include ../_components/html
       h3= section
       p
         a(href='/') Home
+        br
+        a(href='/users') Users
+    br
+
+    -let n=1;
+
+    mixin list(id, items)
+      .container
+        table(id=id width='20%' border='1')
+          tbody
+            tr
+              td №
+              td City name
+              td
+            each item in items
+              tr
+                td=n++
+                td=item.name
+                td
+                  a(href=`/cities/${item._id}`)
+                    button(width='100%', height='100%') Delete
+
+  +list('my-list', cities)
+
+  .container
+    form(action='/cities', method='post')
+      p.search
+        .create-container
+          b City name:
+          input(type='text', size='50'  name='name' placeholder='enter city name')
+          input(type='submit' value='Create')
+

@@ -7,3 +7,45 @@ include ../_components/html
       h3= section
       p
         a(href='/') Home
+        br
+        a(href='/cities') Cities
+    br
+
+    -let n=1;
+
+    b User information:
+    mixin list(id, items)
+      .container
+        table(id=id width='20%' border='1')
+          tbody
+            tr
+              td №
+              td User name
+              td User email
+              td
+            each item in items
+              tr
+                td=n++
+                td=item.username
+                td=item.email
+                td
+                  a(href=`/users/${item._id}`)
+                    button(width='100%', height='100%') Delete
+    +list('users-table', users)
+    br
+    b Create new user:
+    .container
+      form(action='/users', method='post', id='create-form')
+        .flex-container
+          input(type='text',  name='username' placeholder='enter user name')
+          input(type='email', name='email' placeholder='enter user email')
+          mixin list(id, items)
+            select(id=id, name='city', form='create-form')
+              each item in items
+                option(value=item._id)=item.name
+          +list('city-list', cities)
+          input(type='submit' value='Create')
+    script
+
+
+

@@ -5,15 +5,27 @@ module.exports = {
   create: async (req, res, next) => {
     try {
       const city = await m.city.create(req.body);
-      return res.render('cities', city);
+      return res.render('cities', {
+        section: 'Cities',
+        cities: await m.city.find({ 'meta.status': 'active' })
+      });
     } catch (error) {
       return next(error);
     }
   },
 
-  read: async (req, res) => {
+  read: async (req, res, next) => {
     if (req.params.city) {
-      return res.send(await m.city.findById(req.params.city));
+      try {
+        const city = await m.city.findById(req.params.city).exec();
+        await city.remove();
+        return res.render('cities', {
+          section: 'Cities',
+          cities: await m.city.find({ 'meta.status': 'active' })
+        });
+      } catch (error) {
+        return next(error);
+      }
     }
 
     return res.render('cities', {

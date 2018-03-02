@@ -4,7 +4,7 @@ const m = attract('core/models');
 module.exports = {
   create: async (req, res, next) => {
     try {
-      const city = await m.city.create(req.body);
+      await m.city.create(req.body);
       return res.render('cities', {
         section: 'Cities',
         cities: await m.city.find({ 'meta.status': 'active' })

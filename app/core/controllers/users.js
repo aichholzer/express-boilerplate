@@ -3,9 +3,8 @@ const m = attract('core/models');
 
 module.exports = {
   create: async (req, res, next) => {
-    console.log('user:', req.body);
     try {
-      const user = await m.user.create(req.body);
+      await m.user.create(req.body);
       return res.render('users', {
         section: 'Users',
         users: await m.user.find({ 'meta.status': 'active' }),
@@ -39,7 +38,6 @@ module.exports = {
   },
 
   delete: async (req, res, next) => {
-    console.log('del:', req.body);
     try {
       const user = await m.user.findById(req.params.user).exec();
       await user.remove();

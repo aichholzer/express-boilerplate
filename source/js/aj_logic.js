@@ -12,16 +12,13 @@ $(document)
           });
         };
       });
-    $('.delete-city')
-      .each((i, elem) => {
-        elem.onclick = () => {
-          $.ajax({
-            url: `/cities/${elem.getAttribute('_id')}`,
-            type: 'DELETE',
-            success() {
-              location.reload();
-            }
-          });
-        };
+    $('body .delete-city').click((ev) => {
+      $.ajax({
+        url: `/cities/${$(ev.target).attr('_id')}`,
+        type: 'DELETE',
+        success() {
+          $(ev.target).closest('tr').remove();
+        }
       });
+    });
   });

@@ -13,29 +13,26 @@ include ../_components/html
 
     -let n=1;
 
-    mixin list(id, items)
       .container
-        table(id=id width='20%' border='1')
+        table(id='list-cities' width='20%' border='1')
           tbody
             tr
               td №
               td City name
               td
-            each item in items
+            each item in cities
               tr
                 td=n++
                 td=item.name
                 td
-                  a(href=`/cities/${item._id}`)
-                    button(width='100%', height='100%') Delete
+                  button(class='delete-city', width='100%', height='100%', type='submit', _id=item._id) Delete
 
-  +list('my-list', cities)
+    .container
+      form(action='/cities', method='post')
+        p.search
+          .create-container
+            b Сreate new city:
+            input(type='text', size='50'  name='name' placeholder='enter city name')
+            input(type='submit' value='Create')
 
-  .container
-    form(action='/cities', method='post')
-      p.search
-        .create-container
-          b City name:
-          input(type='text', size='50'  name='name' placeholder='enter city name')
-          input(type='submit' value='Create')
 

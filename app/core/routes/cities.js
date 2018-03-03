@@ -3,6 +3,5 @@ module.exports = (router, controller) => {
     .get(controller.read)
     .post(controller.create)
     .delete(controller.delete);
-
   return router;
 };

@@ -15,21 +15,10 @@ module.exports = {
     }
   },
 
-  read: async (req, res, next) => {
+  read: async (req, res) => {
     if (req.params.user) {
-      try {
-        const user = await m.user.findById(req.params.user).exec();
-        await user.remove();
-        return res.render('users', {
-          section: 'Users',
-          users: await m.user.find({ 'meta.status': 'active' }),
-          cities: await m.city.find({ 'meta.status': 'active' })
-        });
-      } catch (error) {
-        return next(error);
-      }
+      return res.send(await m.user.findById(req.params.user));
     }
-
     return res.render('users', {
       section: 'Users',
       users: await m.user.find({ 'meta.status': 'active' }),
@@ -39,9 +28,11 @@ module.exports = {
 
   delete: async (req, res, next) => {
     try {
-      const user = await m.user.findById(req.params.user).exec();
+      const user = await m.user.findById(req.params.user)
+        .exec();
       await user.remove();
-      return res.status(200).end();
+      return res.status(200)
+        .end();
     } catch (error) {
       return next(error);
     }

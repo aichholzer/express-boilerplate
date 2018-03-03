@@ -20,12 +20,16 @@ include ../_components/html
               td №
               td City name
               td
+              td
             each item in cities
-              tr
-                td=n++
-                td=item.name
+              tr(class='row_table')
+                td=n
+                td
+                  input(class='city_name_'+n, type='text',  name='cityname' value=item.name)
                 td
                   button(class='delete-city', width='100%', height='100%', type='submit', _id=item._id) Delete
+                td
+                  button(class='update-city', width='100%', height='100%', type='submit', _id=item._id , _idd=n++, _city=item.name) Update
 
     .container
       form(action='/cities', method='post')

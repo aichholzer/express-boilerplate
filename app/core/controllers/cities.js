@@ -42,5 +42,16 @@ module.exports = {
     } catch (error) {
       return next(error);
     }
+  },
+
+  update: async (req, res, next) => {
+    try {
+      const city = await m.city.findById(req.params.city).exec();
+      await city.update(req.body);
+      return res.status(200)
+        .end('success');
+    } catch (error) {
+      return next(error);
+    }
   }
 };

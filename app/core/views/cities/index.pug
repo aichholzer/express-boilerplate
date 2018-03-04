@@ -11,7 +11,7 @@ include ../_components/html
         a(href='/users') Users
     br
 
-    -let n=1;
+    -let n = 1;
 
       .container
         table(id='list-cities' width='20%' border='1')
@@ -23,7 +23,7 @@ include ../_components/html
               td
             each item in cities
               tr(class='row_table')
-                td=n
+                td= n
                 td
                   input(class='city_name_'+n, type='text',  name='cityname' value=item.name)
                 td

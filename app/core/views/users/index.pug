@@ -11,7 +11,7 @@ include ../_components/html
         a(href='/cities') Cities
     br
 
-    -let n=1;
+    -let n = 1;
 
     b User information:
       .container
@@ -24,9 +24,9 @@ include ../_components/html
               td
             each item in users
               tr(class='user-info')
-                td=n++
-                td=item.username
-                td=item.email
+                td= n++
+                td= item.username
+                td= item.email
                 td
                   button(class='delete-user', width='100%', height='100%' , _id=item._id ) Delete
     br
@@ -38,7 +38,7 @@ include ../_components/html
           input(type='email', name='email' placeholder='enter user email')
           select(id='city-list', name='city', form='create-form')
             each item in cities
-              option(value=item._id)=item.name
+              option(value=item._id)= item.name
           input(type='submit' value='Create')
 
 

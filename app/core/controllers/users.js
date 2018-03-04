@@ -32,7 +32,7 @@ module.exports = {
         .exec();
       await user.remove();
       return res.status(200)
-        .end();
+        .end('success');
     } catch (error) {
       return next(error);
     }

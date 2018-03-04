@@ -1,5 +1,4 @@
 module.exports = (grunt, path) => {
-  grunt.loadNpmTasks('grunt-contrib-watch');
   return {
     scripts: {
       files: [

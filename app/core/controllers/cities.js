@@ -14,20 +14,10 @@ module.exports = {
     }
   },
 
-  read: async (req, res, next) => {
+  read: async (req, res) => {
     if (req.params.city) {
-      try {
-        const city = await m.city.findById(req.params.city).exec();
-        await city.remove();
-        return res.render('cities', {
-          section: 'Cities',
-          cities: await m.city.find({ 'meta.status': 'active' })
-        });
-      } catch (error) {
-        return next(error);
-      }
+      return res.send(await m.city.findById(req.params.city));
     }
-
     return res.render('cities', {
       section: 'Cities',
       cities: await m.city.find({ 'meta.status': 'active' })

@@ -7,3 +7,36 @@ include ../_components/html
       h3= section
       p
         a(href='/') Home
+        br
+        a(href='/users') Users
+    br
+
+    -let n = 1;
+
+      .container
+        table(id='list-cities' width='20%' border='1')
+          tbody
+            tr
+              td №
+              td City name
+              td
+              td
+            each item in cities
+              tr(class='row_table')
+                td= n
+                td
+                  input(class='city_name_'+n, type='text',  name='cityname' value=item.name)
+                td
+                  button(class='delete-city', width='100%', height='100%', type='submit', _id=item._id) Delete
+                td
+                  button(class='update-city', width='100%', height='100%', type='submit', _id=item._id , _idd=n++, _city=item.name) Update
+
+    .container
+      form(action='/cities', method='post')
+        p.search
+          .create-container
+            b Сreate new city:
+            input(type='text', size='50'  name='name' placeholder='enter city name')
+            input(type='submit' value='Create')
+
+

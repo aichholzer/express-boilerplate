@@ -3,6 +3,7 @@ require('attract')({ basePath: __dirname });
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const express = require('express');
+const logger = require('morgan');
 const powered = require('powered');
 const serveFavicon = require('serve-favicon');
 
@@ -25,6 +26,7 @@ m.load(config.mongo).then(() => {
   app.set('views', `${__dirname}/core/views`);
   app.set('view engine', 'pug');
   app.use(
+    logger('dev'),
     powered(),
     compression(),
     express.static(`${__dirname}/public`),

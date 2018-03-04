@@ -1,5 +1,4 @@
 module.exports = (grunt, path) => {
-  grunt.registerTask('watch', ['watch']);
   return {
     scripts: {
       files: [

@@ -7,3 +7,41 @@ include ../_components/html
       h3= section
       p
         a(href='/') Home
+        br
+        a(href='/cities') Cities
+    br
+
+    -let n = 1;
+
+    b User information:
+      .container
+        table(id='users-table' width='20%' border='1')
+          tbody
+            tr
+              td №
+              td User name
+              td User email
+              td
+            each item in users
+              tr(class='user-info')
+                td= n++
+                td= item.username
+                td= item.email
+                td
+                  button(class='delete-user', width='100%', height='100%' , _id=item._id ) Delete
+    br
+    b Create new user:
+    .container
+      form(action='/users', method='post', id='create-form')
+        .flex-container
+          input(type='text',  name='username' placeholder='enter user name')
+          input(type='email', name='email' placeholder='enter user email')
+          select(id='city-list', name='city', form='create-form')
+            each item in cities
+              option(value=item._id)= item.name
+          input(type='submit' value='Create')
+
+
+
+
+

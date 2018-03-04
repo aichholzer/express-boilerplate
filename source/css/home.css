@@ -1,28 +1,33 @@
 html {
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
 }
 
 body {
-    font-family: 'Lato', sans-serif;
-    color: #fff;
-    background-color: #383837;
-    padding: 0;
-    margin: 0;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  background-color: #383837;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
 }
 
-h3, p {
-    width: 100%;
-    text-align: center;
-    font-size: 1.7rem;
-    padding: 50px 0 0;
-    margin: 0;
+h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 1.7rem;
+  padding: 50px 0 0;
+  margin: 0;
+}
+
+p.search {
+  font-size: 1rem;
+  margin: 15px 5px 0 0;
+  padding: 0;
 }
 
 p {
-    font-size: 1rem;
-    margin: 0;
-    padding: 0;
+  text-align: center;
 }
 
 a {
@@ -37,4 +42,54 @@ a:hover {
 
 .actions {
   margin-top: 30px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container input, .flex-container select, .create-container input {
+  outline: none;
+  border: 1px solid grey;
+  padding: 4px;
+  width: 200px;
+  max-width: 100%;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.flex-container input[type='submit'] {
+  width: 210px;
+}
+
+.create-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.create-container input {
+  width: 316px;
+}
+
+.create-container input[type='submit'] {
+  width: 327px;
+  height: 43px;
+}
+
+.container {
+  margin-left: 15px;
+}
+
+b {
+  margin-left: 15px;
+}
+
+td {
+  padding: 5px;
+}
+
+#city-list {
+  width: 210px;
 }

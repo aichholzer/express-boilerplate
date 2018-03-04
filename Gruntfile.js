@@ -16,6 +16,8 @@ module.exports = (grunt) => {
 
     grunt.initConfig(tasks);
     grunt.registerTask('build', ['cssmin', 'uglify']);
+    grunt.registerTask('watch', ['watch']);
+    grunt.loadNpmTasks('grunt-contrib-watch');
   } catch (error) {
     console.error(`I can't load Grunt; ${error.message}`);
   }

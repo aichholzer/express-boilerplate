@@ -4,8 +4,11 @@ const m = attract('core/models');
 module.exports = {
   create: async (req, res, next) => {
     try {
-      const city = await m.city.create(req.body);
-      return res.render('cities', city);
+      await m.city.create(req.body);
+      return res.render('cities', {
+        section: 'Cities',
+        cities: await m.city.find({ 'meta.status': 'active' })
+      });
     } catch (error) {
       return next(error);
     }
@@ -15,7 +18,6 @@ module.exports = {
     if (req.params.city) {
       return res.send(await m.city.findById(req.params.city));
     }
-
     return res.render('cities', {
       section: 'Cities',
       cities: await m.city.find({ 'meta.status': 'active' })
@@ -27,6 +29,17 @@ module.exports = {
       const city = await m.city.findById(req.params.city).exec();
       await city.remove();
       return res.status(200).end();
+    } catch (error) {
+      return next(error);
+    }
+  },
+
+  update: async (req, res, next) => {
+    try {
+      const city = await m.city.findById(req.params.city).exec();
+      await city.update(req.body);
+      return res.status(200)
+        .end('success');
     } catch (error) {
       return next(error);
     }

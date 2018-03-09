@@ -1,0 +1,32 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  flex-direction: column;
+}
+
+.form-container input {
+  width: 200px;
+  max-width: 90%;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid gray;
+  padding: 4px;
+}
+
+.form-container button {
+  width: 100px;
+  max-width: 70%;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container .required {
+  display: none;
+  padding: 5px;
+  color: red;
+  font-size: 14px;
+}
